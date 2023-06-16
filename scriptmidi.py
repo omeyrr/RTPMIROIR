@@ -134,8 +134,12 @@ class myHandler(server.Handler):
         print(':) connecté à {}'.format(peer))
         
         
+        # ------ montre qu'une connexion a bien eu lieu
+        sortieMidi.send_cc(0, 20, 127)
+
         sortieMidi.send_pitchbend(0, 100) # retour à la position 0
-        time.sleep(3)
+        
+        time.sleep(1.5)
 
         sortieMidi.send_pitchbend(0, 0) # retour à la position 0
 
