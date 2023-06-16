@@ -14,7 +14,7 @@ chemin = '/'.join(chemin)
 print('ip récupérée de {}'.format(chemin))
 
 adresseip = open(chemin).readlines()[0]
-port = 5052
+port = 5053
 
 print('lancement...')
 
