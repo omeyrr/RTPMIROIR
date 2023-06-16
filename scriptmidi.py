@@ -14,7 +14,7 @@ chemin = '/'.join(chemin)
 print('ip récupérée de {}'.format(chemin))
 
 adresseip = open(chemin).readlines()[0]
-port = 5053
+port = 5054
 
 print('lancement...')
 
@@ -125,10 +125,19 @@ def action(commande):
 # ------ déclaration du serveur
 
 class myHandler(server.Handler):
-    
+
     # dès qu'une connexion est détectée
     def on_peer_connected(self, peer):
+        
+        global sortieMidi
+
         print(':) connecté à {}'.format(peer))
+        
+        
+        sortieMidi.send_pitchbend(0, 100) # retour à la position 0
+        time.sleep(3)
+
+        sortieMidi.send_pitchbend(0, 0) # retour à la position 0
 
 
     # indique si la connexion est perdue
