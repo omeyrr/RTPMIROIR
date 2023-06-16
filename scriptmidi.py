@@ -68,18 +68,18 @@ sortieMidi.send_cc(0, 20, 127)    # vitesse max
 sortieMidi.send_pitchbend(0, 0)   # position 0
 
 
-# time.sleep(7)  
+time.sleep(7)  
 
-# print('on tourne !')
-# sortieMidi.send_pitchbend(0, 16383) # position max
+print('on tourne !')
+sortieMidi.send_pitchbend(0, 16383) # position max
 
-# time.sleep(7)
+time.sleep(7)
 
-# # --- demi-tour
-# print('demi-tour !')
-# sortieMidi.send_pitchbend(0, 0) # retour à la position 0
+# --- demi-tour
+print('demi-tour !')
+sortieMidi.send_pitchbend(0, 0) # retour à la position 0
 
-# time.sleep(7)
+time.sleep(7)
 
 
 # ------ permet de convertir un byte en int
