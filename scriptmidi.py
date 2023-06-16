@@ -133,8 +133,8 @@ class myHandler(server.Handler):
 
         print(':) connecté à {}'.format(peer))
         
-        
-        # ------ montre qu'une connexion a bien eu lieu
+
+        # ------ montre qu'une connexion a bien eu lieu (bzz-bzz)
         sortieMidi.send_cc(0, 20, 127)
 
         sortieMidi.send_pitchbend(0, 100) # retour à la position 0
@@ -143,10 +143,25 @@ class myHandler(server.Handler):
 
         sortieMidi.send_pitchbend(0, 0) # retour à la position 0
 
+        time.sleep(1)
+
 
     # indique si la connexion est perdue
     def on_peer_disconnected(self, peer):
+        
+        global sortieMidi
+
         print(':( déconnecté de {}'.format(peer))
+
+        
+        # ------ montre qu'qu'une déconnexion a eu lieu (bzz-bzz-bzz)
+        sortieMidi.send_cc(0, 20, 127)
+        sortieMidi.send_pitchbend(0, 100)
+        time.sleep(1)
+        sortieMidi.send_pitchbend(0, 200)
+        time.sleep(1)
+        sortieMidi.send_pitchbend(0, 0)
+        time.sleep(1)
 
     
     def on_midi_commands(self, peer, command_list):
