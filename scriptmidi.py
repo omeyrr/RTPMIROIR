@@ -3,8 +3,20 @@ import time
 
 from pymidi import server
 
-print('lancement...')
 
+# ------ récupère l'adresse ip dans ../ip.txt
+chemin = __file__.split("/")
+chemin = chemin[:-2]
+chemin.append('ip.txt')
+
+chemin = '/'.join(chemin)
+
+print('ip récupérée de {}'.format(chemin))
+
+adresseip = open(chemin).readlines()[0]
+port = 5052
+
+print('lancement...')
 
 # ------ setup de la sortie midi
 sortieMidi = rtmidi.MidiOut()
@@ -129,9 +141,6 @@ class myHandler(server.Handler):
         action(command_list)
 
 
-
-adresseip = '127.0.0.1'
-port = 5052
 
 
 print('démarrage du serveur sur {0}:{1}'.format(adresseip, port))
