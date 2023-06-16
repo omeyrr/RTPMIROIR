@@ -1,0 +1,6 @@
+construct==2.10.68
+future==0.18.3
+mido==1.2.10
+pymidi==0.5.0
+rtmidi2==1.2.1
+six==1.16.0
