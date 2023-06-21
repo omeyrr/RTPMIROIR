@@ -71,20 +71,20 @@ for i in range(16):
     sortieMidi.send_pitchbend(i, 0)   # position 0
 
 
-time.sleep(7)  
+# time.sleep(7)  
 
 print('on tourne !')
 for i in range(16):
     sortieMidi.send_pitchbend(i, 16383) # position max
 
-time.sleep(7)
+# time.sleep(7)
 
 # --- demi-tour
 print('demi-tour !')
 for i in range(16):
     sortieMidi.send_pitchbend(i, 0) # retour à la position 0
 
-time.sleep(7)
+# time.sleep(7)
 
 
 # ------ permet de convertir un byte en int
@@ -117,7 +117,7 @@ def action(commande):
 
         # -- si la commande est un pitch bend
 
-        if le_byte > 223:
+        if le_byte > 223 and (239 - le_byte) < 16:
             valeur_pb = command.params.unknown
             # valeur_pb_convertie = int.from_bytes(valeur_pb, 'big')
             valeur_pb_convertie = byte_to_int(valeur_pb)
@@ -133,7 +133,7 @@ def action(commande):
         #     sortieMidi.send_pitchbend(7, valeur_pb_convertie)
 
         # -- si la commande est de type CC
-        if le_byte > 175:
+        if le_byte > 175 and (191 - le_byte) < 16:
 
             index_cc = command.params.controller
             valeur_cc = command.params.value
