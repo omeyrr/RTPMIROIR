@@ -65,20 +65,23 @@ print('\nenvoi de midi...')
 # ------ le moteur doit faire un aller-retour complet en une 20aine de secondes
 
 # print('position 0...')
-sortieMidi.send_cc(0, 20, 127)    # vitesse max
-sortieMidi.send_pitchbend(0, 0)   # position 0
+for i in range(16):
+    sortieMidi.send_cc(i, 20, 127)    # vitesse max
+    sortieMidi.send_pitchbend(i, 0)   # position 0
 
 
 time.sleep(7)  
 
 print('on tourne !')
-sortieMidi.send_pitchbend(0, 16383) # position max
+for i in range(16):
+    sortieMidi.send_pitchbend(i, 16383) # position max
 
 time.sleep(7)
 
 # --- demi-tour
 print('demi-tour !')
-sortieMidi.send_pitchbend(0, 0) # retour à la position 0
+for i in range(16):
+    sortieMidi.send_pitchbend(i, 0) # retour à la position 0
 
 time.sleep(7)
 
@@ -110,7 +113,7 @@ def action(commande):
 
             print('! pitchbend @ {0} ({1}), channel {2}'.format(valeur_pb_convertie, valeur_pb, canal))
 
-            sortieMidi.send_pitchbend(command.channel, valeur_pb_convertie)
+            sortieMidi.send_pitchbend(canal, valeur_pb_convertie)
 
 
         # -- peut-être pour renvoyer la position sur le channel 7?
