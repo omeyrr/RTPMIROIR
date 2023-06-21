@@ -96,11 +96,10 @@ def byte_to_int(byte):
 
 def action(commande):
 
-    canal = commande.channel
-
     for command in commande:
         
-        print(command)
+        canal = command.channel
+        print(canal)
 
         # -- si la commande est un pitch bend
 
