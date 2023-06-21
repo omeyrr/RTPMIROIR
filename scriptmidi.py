@@ -98,24 +98,26 @@ def action(commande):
 
     for command in commande:
 
+        canal = command.channel
+
         # print(command.commande)
 
         # -- si la commande est un pitch bend
 
-        if command.command_byte == 224 and command.channel != 7:
+        if command.command_byte == 224 and canal != 7:
             valeur_pb = command.params.unknown
             # valeur_pb_convertie = int.from_bytes(valeur_pb, 'big')
             valeur_pb_convertie = byte_to_int(valeur_pb)
 
-            print('! pitchbend @ {0} ({1})'.format(valeur_pb_convertie, valeur_pb))
+            print('! pitchbend @ {0} ({1}), channel {2}'.format(valeur_pb_convertie, valeur_pb, canal))
 
-            sortieMidi.send_pitchbend(0, valeur_pb_convertie)
+            sortieMidi.send_pitchbend(command.channel, valeur_pb_convertie)
 
 
         # -- peut-être pour renvoyer la position sur le channel 7?
 
-        if command.command_byte == 224 and command.channel == 7:
-            sortieMidi.send_pitchbend(7, valeur_pb_convertie)
+        # if command.command_byte == 224 and command.channel == 7:
+        #     sortieMidi.send_pitchbend(7, valeur_pb_convertie)
 
         # -- si la commande est de type CC
         if command.command_byte == 176:
@@ -123,9 +125,9 @@ def action(commande):
             index_cc = command.params.controller
             valeur_cc = command.params.value
 
-            print('! cc{0} @ {1}'.format(index_cc, valeur_cc))
+            print('! cc{0} @ {1}, channel {2}'.format(index_cc, valeur_cc, canal))
 
-            sortieMidi.send_cc(0, index_cc, valeur_cc)
+            sortieMidi.send_cc(canal, index_cc, valeur_cc)
 
 
 
