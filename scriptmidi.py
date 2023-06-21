@@ -100,7 +100,7 @@ def action(commande):
 
         canal = command.channel
         
-        print(command.commande)
+        print(command)
 
         # -- si la commande est un pitch bend
 
