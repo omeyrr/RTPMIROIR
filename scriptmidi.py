@@ -110,6 +110,12 @@ def action(commande):
 
             sortieMidi.send_pitchbend(0, valeur_pb_convertie)
 
+
+        # -- peut-être pour renvoyer la position sur le channel 7?
+
+        if command.command_byte == 224 and command.channel == 7:
+            sortieMidi.send_pitchbend(7, valeur_pb_convertie)
+
         # -- si la commande est de type CC
         if command.command_byte == 176:
 
