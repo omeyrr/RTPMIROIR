@@ -96,11 +96,9 @@ def byte_to_int(byte):
 
 def action(commande):
 
-    canal = command.channel
+    canal = commande.channel
 
     for command in commande:
-
-        
         
         print(command)
 
