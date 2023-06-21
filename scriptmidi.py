@@ -13,9 +13,8 @@ chemin = '/'.join(chemin)
 
 print('ip récupérée de {}'.format(chemin))
 
-# adresseip = open(chemin).readlines()[0].split(' ')[0]
+adresseip = open(chemin).readlines()[0].split(' ')[0]
 
-adresseip = '127.0.0.1'
 print(adresseip)
 port = 5055
 
