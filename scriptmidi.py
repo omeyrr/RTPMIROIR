@@ -96,6 +96,12 @@ def byte_to_int(byte):
     
     return nombre_calcule
 
+
+
+
+
+
+
 # ------ la fonction qui sera lancée à la  réception de chaque message midi
 
 def action(commande):
@@ -107,6 +113,7 @@ def action(commande):
         canal = command.channel
 
         le_byte = command.command_byte
+        print('{0}, {1}'.format(le_byte, type(le_byte)))
 
         # -- si la commande est un pitch bend
 
