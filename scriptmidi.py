@@ -108,7 +108,7 @@ def action(commande):
 
     for command in commande:
         
-        print(command)
+        
 
         canal = command.channel
 
@@ -134,12 +134,17 @@ def action(commande):
 
         # -- si la commande est de type CC
         if (le_byte > 175) and ((191 - le_byte) < 16):
+
+            print(command)
+
+            print('cc!')
+
             pass
+
             # index_cc = command.params.controller
             # valeur_cc = command.params.value
 
             # print('! cc{0} @ {1}, channel {2}'.format(index_cc, valeur_cc, canal))
-
             # sortieMidi.send_cc(canal, index_cc, valeur_cc)
 
 
