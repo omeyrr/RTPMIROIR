@@ -99,8 +99,8 @@ def action(commande):
     for command in commande:
 
         canal = command.channel
-
-        # print(command.commande)
+        
+        print(command.commande)
 
         # -- si la commande est un pitch bend
 
