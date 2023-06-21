@@ -108,18 +108,16 @@ def action(commande):
 
     for command in commande:
         
-        
-
-        canal = command.channel
-
         le_byte = command.command_byte
-        print('{0}, {1}'.format(le_byte, type(le_byte)))
 
         # -- si la commande est un pitch bend
 
         if (le_byte > 223) and ((239 - le_byte) < 16):
+
+            canal = command.channel
+
             valeur_pb = command.params.unknown
-            # valeur_pb_convertie = int.from_bytes(valeur_pb, 'big')
+
             valeur_pb_convertie = byte_to_int(valeur_pb)
 
             print('! pitchbend @ {0} ({1}), channel {2}'.format(valeur_pb_convertie, valeur_pb, canal))
@@ -136,6 +134,8 @@ def action(commande):
 
         # -- si la commande est de type CC
         if (le_byte > 175) and ((191 - le_byte) < 16):
+
+            canal = command.channel
 
             index_cc = command.params.controller
             valeur_cc = command.params.value
@@ -190,7 +190,7 @@ class myHandler(server.Handler):
 
     
     def on_midi_commands(self, peer, command_list):
-        # print(command_list)
+
         action(command_list)
 
 
