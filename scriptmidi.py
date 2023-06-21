@@ -103,7 +103,7 @@ def action(commande):
 
         # -- si la commande est un pitch bend
 
-        if command.command_byte == 224 and canal != 7:
+        if command.command_byte > 223 and (239 - command.command_byte) < 16:
             valeur_pb = command.params.unknown
             # valeur_pb_convertie = int.from_bytes(valeur_pb, 'big')
             valeur_pb_convertie = byte_to_int(valeur_pb)
@@ -119,7 +119,7 @@ def action(commande):
         #     sortieMidi.send_pitchbend(7, valeur_pb_convertie)
 
         # -- si la commande est de type CC
-        if command.command_byte == 176:
+        if command.command_byte > 175 and (191 - command.command_byte) < 16:
 
             index_cc = command.params.controller
             valeur_cc = command.params.value
