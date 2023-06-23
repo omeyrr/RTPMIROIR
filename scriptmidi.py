@@ -77,14 +77,14 @@ print('on tourne !')
 for i in range(16):
     sortieMidi.send_pitchbend(i, 16383) # position max
 
-# time.sleep(7)
+time.sleep(7)
 
 # --- demi-tour
 print('demi-tour !')
 for i in range(16):
     sortieMidi.send_pitchbend(i, 0) # retour à la position 0
 
-# time.sleep(7)
+time.sleep(7)
 
 
 # ------ permet de convertir un byte en int
@@ -160,13 +160,14 @@ class myHandler(server.Handler):
         
 
         # ------ montre qu'une connexion a bien eu lieu (bzz-bzz)
-        sortieMidi.send_cc(0, 20, 127)
-
-        sortieMidi.send_pitchbend(0, 100) # retour à la position 0
+        for i in range(16):
+            sortieMidi.send_cc(i, 20, 127)
+            sortieMidi.send_pitchbend(i, 100) # retour à la position 0
         
         time.sleep(1.5)
 
-        sortieMidi.send_pitchbend(0, 0) # retour à la position 0
+        for i in range(16):
+            sortieMidi.send_pitchbend(i, 0) # retour à la position 0
 
         time.sleep(1)
 
@@ -180,12 +181,15 @@ class myHandler(server.Handler):
 
         
         # ------ montre qu'qu'une déconnexion a eu lieu (bzz-bzz-bzz)
-        sortieMidi.send_cc(0, 20, 127)
-        sortieMidi.send_pitchbend(0, 100)
+        for i in range(16):
+            sortieMidi.send_cc(i, 20, 127)
+            sortieMidi.send_pitchbend(i, 100)
         time.sleep(1)
-        sortieMidi.send_pitchbend(0, 200)
+        for i in range(16):
+            sortieMidi.send_pitchbend(i, 200)
         time.sleep(1)
-        sortieMidi.send_pitchbend(0, 0)
+        for i in range(16):
+            sortieMidi.send_pitchbend(i, 0)
         time.sleep(1)
 
     
