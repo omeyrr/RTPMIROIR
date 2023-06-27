@@ -77,7 +77,7 @@ for i in range(16):
 
 print('on tourne !')
 for i in range(16):
-    sortieMidi.send_pitchbend(i, 16383) # position max
+    sortieMidi.send_pitchbend(i, 1000) # position max
 
 time.sleep(7)
 
