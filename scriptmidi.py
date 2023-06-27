@@ -53,6 +53,8 @@ while foundTeensy == False:
 
 print('\nTeensy trouvée!')
 
+time.sleep(5)
+
 print('\nsortie MIDI: {}'.format(sortieTeensy))
 sortieMidi.open_port(sortieTeensy)
 
