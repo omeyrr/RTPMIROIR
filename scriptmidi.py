@@ -67,26 +67,26 @@ print('\nenvoi de midi...')
 # ------ séquence de démarrage, juste pour vérifier si ça marche     
 # ------ le moteur doit faire un aller-retour complet en une 20aine de secondes
 
-# print('position 0...')
-for i in range(16):
-    sortieMidi.send_cc(i, 20, 127)    # vitesse max
-    sortieMidi.send_pitchbend(i, 0)   # position 0
+# # print('position 0...')
+# for i in range(16):
+#     sortieMidi.send_cc(i, 20, 127)    # vitesse max
+#     sortieMidi.send_pitchbend(i, 0)   # position 0
 
 
-# time.sleep(7)  
+# # time.sleep(7)  
 
-print('on tourne !')
-for i in range(16):
-    sortieMidi.send_pitchbend(i, 1000) # position max
+# print('on tourne !')
+# for i in range(16):
+#     sortieMidi.send_pitchbend(i, 1000) # position max
 
-time.sleep(7)
+# time.sleep(7)
 
-# --- demi-tour
-print('demi-tour !')
-for i in range(16):
-    sortieMidi.send_pitchbend(i, 0) # retour à la position 0
+# # --- demi-tour
+# print('demi-tour !')
+# for i in range(16):
+#     sortieMidi.send_pitchbend(i, 0) # retour à la position 0
 
-time.sleep(7)
+# time.sleep(7)
 
 
 # ------ permet de convertir un byte en int
