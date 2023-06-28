@@ -63,32 +63,6 @@ print('\nenvoi de midi...')
 
 
 
-
-# ------ séquence de démarrage, juste pour vérifier si ça marche     
-# ------ le moteur doit faire un aller-retour complet en une 20aine de secondes
-
-# # print('position 0...')
-# for i in range(16):
-#     sortieMidi.send_cc(i, 20, 127)    # vitesse max
-#     sortieMidi.send_pitchbend(i, 0)   # position 0
-
-
-# # time.sleep(7)  
-
-# print('on tourne !')
-# for i in range(16):
-#     sortieMidi.send_pitchbend(i, 1000) # position max
-
-# time.sleep(7)
-
-# # --- demi-tour
-# print('demi-tour !')
-# for i in range(16):
-#     sortieMidi.send_pitchbend(i, 0) # retour à la position 0
-
-# time.sleep(7)
-
-
 # ------ permet de convertir un byte en int
 
 def byte_to_int(byte):
@@ -149,7 +123,7 @@ def action(commande):
 
 
 
-# ------ déclaration du serveur
+# ------ classe de 'handler' qui sera utilisée pour lancer le serveur
 
 class myHandler(server.Handler):
 
@@ -201,7 +175,7 @@ class myHandler(server.Handler):
 
 
 
-
+# ------ annonce à quelle adresse le serveur sera ouvert (si tout se passe bien, l'adresse de la carte + le port spécifié en haut du code)
 print('démarrage du serveur sur {0}:{1}'.format(adresseip, port))
 
 # ------ lancement du serveur
