@@ -162,16 +162,16 @@ class myHandler(server.Handler):
         
 
         # ------ montre qu'une connexion a bien eu lieu (bzz-bzz)
-        for i in range(16):
-            sortieMidi.send_cc(i, 20, 127)
-            sortieMidi.send_pitchbend(i, 100) # retour à la position 0
+        # for i in range(16):
+        #     sortieMidi.send_cc(i, 20, 127)
+        #     sortieMidi.send_pitchbend(i, 100) # retour à la position 0
         
-        time.sleep(1.5)
+        # time.sleep(1.5)
 
-        for i in range(16):
-            sortieMidi.send_pitchbend(i, 0) # retour à la position 0
+        # for i in range(16):
+        #     sortieMidi.send_pitchbend(i, 0) # retour à la position 0
 
-        time.sleep(1)
+        # time.sleep(1)
 
 
     # indique si la connexion est perdue
@@ -183,16 +183,16 @@ class myHandler(server.Handler):
 
         
         # ------ montre qu'qu'une déconnexion a eu lieu (bzz-bzz-bzz)
-        for i in range(16):
-            sortieMidi.send_cc(i, 20, 127)
-            sortieMidi.send_pitchbend(i, 100)
-        time.sleep(1)
-        for i in range(16):
-            sortieMidi.send_pitchbend(i, 200)
-        time.sleep(1)
-        for i in range(16):
-            sortieMidi.send_pitchbend(i, 0)
-        time.sleep(1)
+        # for i in range(16):
+        #     sortieMidi.send_cc(i, 20, 127)
+        #     sortieMidi.send_pitchbend(i, 100)
+        # time.sleep(1)
+        # for i in range(16):
+        #     sortieMidi.send_pitchbend(i, 200)
+        # time.sleep(1)
+        # for i in range(16):
+        #     sortieMidi.send_pitchbend(i, 0)
+        # time.sleep(1)
 
     
     def on_midi_commands(self, peer, command_list):
